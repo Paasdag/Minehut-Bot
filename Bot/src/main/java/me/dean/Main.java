@@ -24,7 +24,7 @@ import org.javacord.api.util.logging.ExceptionLogger;
 public class Main {
 
     public static void main(String[] args) {
-        String token = "MTIxMDk3Mjc4OTc0NjQzODE2NA.GHz8ij.U-hePLibtFk8zJiNVhsiMH7Ci5FJmb2JHC3SK4";
+        String token = "Token goes here";
         DiscordApi api = new DiscordApiBuilder().setToken(token).addIntents(Intent.MESSAGE_CONTENT).login().join();
 
         // slash commands
