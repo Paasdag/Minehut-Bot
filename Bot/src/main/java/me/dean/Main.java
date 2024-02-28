@@ -24,7 +24,7 @@ import org.javacord.api.util.logging.ExceptionLogger;
 public class Main {
 
     public static void main(String[] args) {
-        String token = "Token goes here";
+        String token = "";
         DiscordApi api = new DiscordApiBuilder().setToken(token).addIntents(Intent.MESSAGE_CONTENT).login().join();
 
         // slash commands
@@ -39,8 +39,8 @@ public class Main {
                 String JavaPlayers = String.valueOf(Players.getJavaTotal());
                 String UserCount = String.valueOf(MinehutAPI.getUserCount());
                 EmbedBuilder embed = new EmbedBuilder()
-                        .setTitle("Minehut player count")
-                        .addField("All registered users (on website)", UserCount)
+                        .setTitle("Minehut Stats")
+                        .addField("All registered users", UserCount)
                         .addField("Total Players", AllPlayers)
                         .addField("Java Players", JavaPlayers)
                         .addField("Total Servers", String.valueOf(MinehutAPI.getOnlineServerCount()))
@@ -60,7 +60,7 @@ public class Main {
                     int playercount = srv.getPlayerCount();
                     boolean isonline = srv.isOnline();
                     double Credits = srv.getCreditsPerDay();
-                    slashCommandInteraction.createImmediateResponder().setContent("name: " + name + ", Online: " + isonline + ", Player count:" + playercount + ", Banned: " + suspended + ", Credits per day: "+ Credits).setFlags(MessageFlag.EPHEMERAL).respond().exceptionally(ExceptionLogger.get());
+                    slashCommandInteraction.createImmediateResponder().setContent("name: " + name + ", Online: " + isonline + ", Player count:" + playercount + ", Banned: " + suspended + ", Credits per day: "+ Math.round(Credits)).setFlags(MessageFlag.EPHEMERAL).respond().exceptionally(ExceptionLogger.get());
                 });
             }
         });
